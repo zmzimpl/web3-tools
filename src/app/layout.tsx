@@ -22,11 +22,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import ThemeRegistry from "@/components/ThemeRegistry/ThemeRegistry";
 import { MetaMaskProvider } from "metamask-react";
 
-export const metadata = {
-  title: "Web3 Tools",
-  description: "Web3 Tools",
-};
-
 const DRAWER_WIDTH = 240;
 
 const LINKS = [
