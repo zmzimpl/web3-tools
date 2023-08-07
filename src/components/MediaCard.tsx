@@ -5,8 +5,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 
-export default function MediaCard({ heading, text }: { heading: string; text: string }) {
+export default function MediaCard({ heading, text, href }: { heading: string; text: string; href: string }) {
   return (
     <Card>
       <Image
@@ -29,8 +30,7 @@ export default function MediaCard({ heading, text }: { heading: string; text: st
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small" LinkComponent={Link} href={href}>Details</Button>
       </CardActions>
     </Card>
   );

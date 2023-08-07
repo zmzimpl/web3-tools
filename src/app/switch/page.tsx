@@ -2,14 +2,13 @@
 import * as React from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { Button, Fab, Stack } from "@mui/material";
+import { Fab, Stack, Typography } from "@mui/material";
 import { useMetaMask } from "metamask-react";
 
 const networks = [
   {
     logo: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=026",
-    name: "Ethereum ",
+    name: "Ethereum",
     id: "mainnet",
     code: "0x1",
   },
@@ -115,12 +114,72 @@ const networks = [
       chainId: "0xfa",
     },
   },
+  {
+    logo: "https://portal.zksync.io/_nuxt/icons/64x64.cb7cab0d.png",
+    name: "zkSync",
+    id: "zksync",
+    code: "0x144",
+    chainInfo: {
+      chainName: "zkSync Era Mainnet",
+      rpcUrls: ["https://zksync-era.blockpi.network/v1/rpc/public"],
+      nativeCurrency: {
+        name: "ETH",
+        symbol: "ETH",
+        decimals: 18,
+      },
+      blockExplorerUrls: ["https://explorer.zksync.io"],
+      chainId: "0x144",
+    },
+  },
 ];
 
-export default function StarredPage() {
-  const { switchChain, addChain } = useMetaMask();
+const chainIdMap: { [key: string]: string } = {
+  "0x1": "Ethereum",
+  "0x89": "Polygon",
+  "0x38": "BSC",
+  "0xa4b1": "Arbitrum",
+  "0xa": "Optimism",
+  "0xa86a": "Avalanche",
+  "0xfa": "Fantom",
+  "0x144": "zkSync",
+};
+// const nameMap = {
+//   Ethereum: "0x1",
+//   Polygon: "0x89",
+//   BSC: "0x38",
+//   Arbitrum: "0xa4b1",
+//   Optimism: "0xa",
+//   Avalanche: "0xa86a",
+//   Fantom: "0xfa",
+//   zkSync: "0x144",
+// };
 
-  const clickToSwitch = (network: { logo: string; name: string; id: string; code: string; chainInfo?: undefined; } | { logo: string; name: string; id: string; code: string; chainInfo: { chainName: string; rpcUrls: string[]; nativeCurrency: { name: string; symbol: string; decimals: number; }; blockExplorerUrls: string[]; chainId: string; }; }) => {
+export default function StarredPage() {
+  const { switchChain, addChain, chainId, ethereum } = useMetaMask();
+
+  const clickToSwitch = (
+    network:
+      | {
+          logo: string;
+          name: string;
+          id: string;
+          code: string;
+          chainInfo?: undefined;
+        }
+      | {
+          logo: string;
+          name: string;
+          id: string;
+          code: string;
+          chainInfo: {
+            chainName: string;
+            rpcUrls: string[];
+            nativeCurrency: { name: string; symbol: string; decimals: number };
+            blockExplorerUrls: string[];
+            chainId: string;
+          };
+        }
+  ) => {
     switchChain(network.code).catch(async (error) => {
       switch (error.code) {
         case -32002: // already pending
@@ -147,12 +206,22 @@ export default function StarredPage() {
           alignItems: "center",
         }}
       >
+        <Typography variant="h5" gutterBottom mb={4}>
+          Current Chain:
+          <span id="current-chain-name">
+            {chainId ? chainIdMap[chainId] : ""}
+          </span>
+          <span id="current-chain-id"> ({chainId})</span>
+        </Typography>
+
         <Stack direction="row" spacing={3}>
           {networks.map((network, index) => (
             <Fab
               key={index}
-              id={network.id}
+              id={network.code}
               variant="extended"
+              aria-chain-name={network.name}
+              aria-chain-id={network.code}
               onClick={() => clickToSwitch(network)}
               size="large"
             >
@@ -164,13 +233,6 @@ export default function StarredPage() {
               {network.name}
             </Fab>
           ))}
-          {/* <Fab
-            variant="extended"
-            onClick={() => switchChain("0x1")}
-            size="large"
-          >
-            Mainnet
-          </Fab> */}
         </Stack>
       </Box>
     </Container>
