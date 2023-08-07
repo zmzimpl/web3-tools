@@ -220,8 +220,8 @@ export default function StarredPage() {
               key={index}
               id={network.code}
               variant="extended"
-              aria-chain-name={network.name}
-              aria-chain-id={network.code}
+              chain-name={network.name}
+              chain-id={network.code}
               onClick={() => clickToSwitch(network)}
               size="large"
             >
