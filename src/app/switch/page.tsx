@@ -13,6 +13,12 @@ const networks = [
     code: "0x1",
   },
   {
+    logo: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=026",
+    name: "Goerli",
+    id: "goerli",
+    code: "0x5",
+  },
+  {
     logo: "https://cryptologos.cc/logos/polygon-matic-logo.svg?v=026",
     name: "Polygon",
     id: "polygon",
@@ -154,7 +160,7 @@ const chainIdMap: { [key: string]: string } = {
 //   zkSync: "0x144",
 // };
 
-export default function StarredPage() {
+export default function SwitchPage() {
   const { switchChain, addChain, chainId, ethereum } = useMetaMask();
 
   const clickToSwitch = (

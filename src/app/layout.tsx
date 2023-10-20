@@ -26,8 +26,8 @@ const DRAWER_WIDTH = 240;
 
 const LINKS = [
   { text: "Home", href: "/", icon: HomeIcon },
-  { text: "Switch", href: "/switch", icon: LoopIcon },
-  { text: "Tasks", href: "/tasks", icon: ChecklistIcon },
+  { text: "Kzg", href: "/kzg", icon: ChecklistIcon },
+  // { text: "Tasks", href: "/tasks", icon: ChecklistIcon },
 ];
 
 const PLACEHOLDER_LINKS = [
@@ -46,7 +46,7 @@ export default function RootLayout({
       <body>
         <ThemeRegistry>
           <MetaMaskProvider>
-            <AppBar position="fixed" sx={{ zIndex: 2000 }}>
+            <AppBar position="fixed" sx={{ zIndex: 1201 }}>
               <Toolbar sx={{ backgroundColor: "background.paper" }}>
                 <DashboardIcon
                   sx={{ color: "#444", mr: 2, transform: "translateY(-2px)" }}
@@ -85,7 +85,7 @@ export default function RootLayout({
                 ))}
               </List>
               <Divider sx={{ mt: "auto" }} />
-              <List>
+              {/* <List>
                 {PLACEHOLDER_LINKS.map(({ text, icon: Icon }) => (
                   <ListItem key={text} disablePadding>
                     <ListItemButton>
@@ -96,7 +96,7 @@ export default function RootLayout({
                     </ListItemButton>
                   </ListItem>
                 ))}
-              </List>
+              </List> */}
             </Drawer>
             <Box
               component="main"

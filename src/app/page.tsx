@@ -15,24 +15,25 @@ export default function HomePage() {
       <Box>
         <Alert severity="info" sx={{ mt: 2, mb: 5 }}>
           <AlertTitle>Hello 👋</AlertTitle>
-          This app is my web3 tools.
+          This app is miles's web3 tools.
         </Alert>
 
         <Grid container rowSpacing={3} columnSpacing={3}>
           <Grid xs={6}>
             <MediaCard
-              heading="Switch"
-              text="Switch network with ease."
-              href="/switch"
+              heading="KZG"
+              text="Batch Check KZG Poap Eligibility."
+              href="/kzg"
+              imgUrl='/imgs/kzg-ceremony-contributor.png'
             />
           </Grid>
-          <Grid xs={6}>
+          {/* <Grid xs={6}>
             <MediaCard
               heading="Tasks"
               text="Current Task List"
               href="/tasks"
             />
-          </Grid>
+          </Grid> */}
           {/* <Grid xs={6}>
             <MediaCard
               heading="RGB"
