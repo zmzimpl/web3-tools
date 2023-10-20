@@ -184,9 +184,8 @@ export default function StarredPage() {
               margin="dense"
               id="name"
               placeholder={`Add your address or Github Handle, one per line. For example:
-0x5D544C2329d812B1eA1D3F520C882d69811cabce
-0x5D544C2329d812B1eA1D3F520C882d69811c7ce3
-venlinCommunity`}
+0x5D544C223D132XDD3S312F520C882d69811cabce
+0x5D544C232321S3fc2A1D3F520C882d69811c7ce3`}
               type="email"
               value={address}
               fullWidth
