@@ -17,7 +17,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import LoopIcon from '@mui/icons-material/Loop';
 import ChecklistIcon from "@mui/icons-material/Checklist";
 import SettingsIcon from "@mui/icons-material/Settings";
-import SupportIcon from "@mui/icons-material/Support";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ThemeRegistry from "@/components/ThemeRegistry/ThemeRegistry";
 import { MetaMaskProvider } from "metamask-react";
@@ -31,9 +31,7 @@ const LINKS = [
 ];
 
 const PLACEHOLDER_LINKS = [
-  { text: "Settings", icon: SettingsIcon },
-  { text: "Support", icon: SupportIcon },
-  { text: "Logout", icon: LogoutIcon },
+  { text: "Twitter", icon: TwitterIcon, href: 'https://twitter.com/zmzimpl' },
 ];
 
 export default function RootLayout({
@@ -85,10 +83,10 @@ export default function RootLayout({
                 ))}
               </List>
               <Divider sx={{ mt: "auto" }} />
-              {/* <List>
-                {PLACEHOLDER_LINKS.map(({ text, icon: Icon }) => (
+              <List>
+                {PLACEHOLDER_LINKS.map(({ text, icon: Icon, href }) => (
                   <ListItem key={text} disablePadding>
-                    <ListItemButton>
+                    <ListItemButton component={Link} href={href}>
                       <ListItemIcon>
                         <Icon />
                       </ListItemIcon>
@@ -96,7 +94,7 @@ export default function RootLayout({
                     </ListItemButton>
                   </ListItem>
                 ))}
-              </List> */}
+              </List>
             </Drawer>
             <Box
               component="main"
