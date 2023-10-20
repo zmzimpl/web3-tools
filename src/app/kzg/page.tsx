@@ -74,7 +74,7 @@ export default function StarredPage() {
     for (let index = 0; index < items.length; index++) {
       const item = items[index];
       await axios
-        .get(`http://api.ulsincere.com/kzg?address=${item.query}`)
+        .get(`https://api.ulsincere.com/kzg?address=${item.query}`)
         .then((response) => {
           const result = response.data.data;
           // Update the specific row with the new data.
